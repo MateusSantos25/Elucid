@@ -1,0 +1,29 @@
+# Elucid: arquivos que NUNCA devem ir para o GitHub
+
+# A sua chave do Gemini (o colocar_chave.py cria este arquivo de novo quando precisar)
+segredos.js
+
+# Pasta de segredos do Streamlit, se um dia for copiada para cá
+.streamlit/
+secrets.toml
+.env
+
+# Dados reais (só a base fictícia dos testes pode subir)
+*.csv
+*.xlsx
+!testes/cancelamentos_exemplo.csv
+!testes/duas_abas.xlsx
+
+# Coisas geradas pelos testes e pelas ferramentas
+capturas/
+__pycache__/
+*.pyc
+node_modules/
+.netlify/
+
+# Arquivos de sistema e de editor
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+.idea/

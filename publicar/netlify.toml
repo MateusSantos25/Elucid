@@ -1,0 +1,6 @@
+# Elucid na Netlify: o site fica na pasta "site" e a função (que guarda a chave) fica fora dela, como a Netlify recomenda.
+[build]
+  publish = "site"
+
+[functions]
+  directory = "netlify/functions"

@@ -1,0 +1,3 @@
+# Guarda os textos no GitHub sempre com o mesmo tipo de quebra de linha (Windows e Linux iguais)
+* text=auto
+*.xlsx binary

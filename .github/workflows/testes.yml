@@ -1,0 +1,58 @@
+# Elucid: toda vez que você enviar código para o GitHub, este roteiro roda todos os testes sozinho.
+# Se algo quebrar, aparece um X vermelho na aba "Actions" do repositório.
+name: Testes do Elucid
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar o código
+        uses: actions/checkout@v4
+
+      - name: Preparar o Node (para os testes do motor)
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Preparar o Python (para o construir.py e os testes de navegador)
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Conferir se o elucid.html está atualizado
+        run: |
+          python construir.py
+          if ! git diff --quiet -- elucid.html publicar/site/index.html; then
+            echo "::error::O elucid.html está desatualizado. Rode 'python construir.py' e envie de novo."
+            exit 1
+          fi
+
+      - name: Testar o motor (contas iguais às do pandas)
+        run: node testes/test_nucleo.js
+
+      - name: Testar a função da Netlify
+        run: node testes/test_servidor.mjs
+
+      - name: Instalar o navegador de testes (Playwright)
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+
+      - name: Testes de navegador
+        run: |
+          for t in testes/e2e_*.py; do
+            echo "=== $t"
+            python "$t"
+          done
+
+      - name: Guardar as capturas de tela
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: capturas
+          path: capturas/
+          if-no-files-found: ignore
