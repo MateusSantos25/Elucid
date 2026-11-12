@@ -1302,6 +1302,10 @@ body.arrastando-corpo * {
 .modal-cartao p {
   color: var(--mudo);
 }
+.modal-link {
+  color: var(--azul);
+  font-weight: 700;
+}
 .modal-dica {
   font-size: 13px;
   color: var(--tenue) !important;
@@ -6177,6 +6181,23 @@ ${ia.perguntas_para_equipe.length ? `<h2>Perguntas para a equipe</h2>${ul(ia.per
           "p",
           {},
           "O assistente precisa da sua chave para entender as perguntas. Ela fica salva só neste navegador e é enviada apenas ao Google. As análises prontas funcionam sem chave.",
+        ),
+        h(
+          "p",
+          {},
+          "Não tem uma chave? ",
+          // endereço completo: funciona também quando o elucid.html é aberto sozinho, fora do site
+          h(
+            "a",
+            {
+              href: "https://mateussantos25.github.io/Elucid/chave.html",
+              target: "_blank",
+              rel: "noopener noreferrer",
+              class: "modal-link",
+            },
+            "Veja como conseguir a sua (grátis, uns 2 minutos)",
+          ),
+          ".",
         ),
         h(
           "p",

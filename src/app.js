@@ -180,6 +180,23 @@
         ),
         h(
           "p",
+          {},
+          "Não tem uma chave? ",
+          // endereço completo: funciona também quando o elucid.html é aberto sozinho, fora do site
+          h(
+            "a",
+            {
+              href: "https://mateussantos25.github.io/Elucid/chave.html",
+              target: "_blank",
+              rel: "noopener noreferrer",
+              class: "modal-link",
+            },
+            "Veja como conseguir a sua (grátis, uns 2 minutos)",
+          ),
+          ".",
+        ),
+        h(
+          "p",
           { class: "modal-dica" },
           "Dica: se preferir, escreva a chave no arquivo segredos.js, que fica ao lado do elucid.html.",
         ),

@@ -1290,6 +1290,10 @@ body.arrastando-corpo * {
 .modal-cartao p {
   color: var(--mudo);
 }
+.modal-link {
+  color: var(--azul);
+  font-weight: 700;
+}
 .modal-dica {
   font-size: 13px;
   color: var(--tenue) !important;
