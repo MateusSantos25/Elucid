@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chave do Gemini</title>
+    <meta
+      name="description"
+      content="Passo a passo simples para criar a sua chave do Gemini e usar o assistente do Elucid."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='10' fill='%2318223A'/%3E%3Cpath d='M7 21.5l6-7.5 5 4 7-9' stroke='%236AA6FF' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='25' cy='9' r='3.2' fill='%23FFB547'/%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Mesmas cores do Elucid (src/estilo.css). */
+      :root {
+        --bg0: #080c16;
+        --bg2: #121a2e;
+        --bg3: #18223a;
+        --linha: #222d47;
+        --texto: #e8ecf6;
+        --mudo: #8d99b5;
+        --azul: #6aa6ff;
+        --azul2: #3c73e8;
+        --ouro: #ffb547;
+        --teal: #35d0ba;
+        --serif: "Instrument Serif", Georgia, serif;
+        --sans: "Manrope", "Segoe UI", system-ui, sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg0);
+        color: var(--texto);
+        font: 16px/1.6 var(--sans);
+      }
+      main {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 40px 16px 64px;
+      }
+      .marca {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--texto);
+        text-decoration: none;
+        font-weight: 800;
+        font-size: 18px;
+      }
+      h1 {
+        font: 400 clamp(36px, 7vw, 52px) / 1.05 var(--serif);
+        margin: 28px 0 12px;
+      }
+      h1 em {
+        color: var(--azul);
+      }
+      .sub {
+        color: var(--mudo);
+        margin: 0 0 28px;
+        font-size: 17px;
+      }
+      .acoes {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 36px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 12px 20px;
+        border-radius: 12px;
+        font-weight: 700;
+        text-decoration: none;
+        border: 1px solid var(--linha);
+        color: var(--texto);
+        background: var(--bg3);
+      }
+      .btn:hover {
+        border-color: var(--azul);
+      }
+      .btn-primario {
+        background: linear-gradient(135deg, var(--azul), var(--azul2));
+        border-color: transparent;
+        color: #fff;
+      }
+      ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        counter-reset: passo;
+      }
+      li {
+        counter-increment: passo;
+        position: relative;
+        background: var(--bg2);
+        border: 1px solid var(--linha);
+        border-radius: 16px;
+        padding: 18px 20px 18px 68px;
+        margin-bottom: 12px;
+      }
+      li::before {
+        content: counter(passo);
+        position: absolute;
+        left: 18px;
+        top: 16px;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-weight: 800;
+        background: var(--bg3);
+        color: var(--ouro);
+        border: 1px solid var(--linha);
+      }
+      li b {
+        display: block;
+        margin-bottom: 2px;
+      }
+      li span {
+        color: var(--mudo);
+      }
+      a {
+        color: var(--azul);
+      }
+      code {
+        background: var(--bg3);
+        padding: 1px 6px;
+        border-radius: 6px;
+        font-size: 14px;
+      }
+      .aviso {
+        margin-top: 28px;
+        border-left: 3px solid var(--teal);
+        background: var(--bg2);
+        border-radius: 0 12px 12px 0;
+        padding: 14px 18px;
+        color: var(--mudo);
+      }
+      .aviso b {
+        color: var(--texto);
+      }
+      h2 {
+        font: 400 28px/1.1 var(--serif);
+        margin: 40px 0 12px;
+      }
+      .perguntas p {
+        color: var(--mudo);
+        margin: 0 0 14px;
+      }
+      .perguntas b {
+        color: var(--texto);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="marca" href="elucid.html">
+        <svg width="34" height="34" viewBox="0 0 32 32" aria-hidden="true">
+          <rect width="32" height="32" rx="10" fill="#18223A" />
+          <path
+            d="M7 21.5l6-7.5 5 4 7-9"
+            stroke="#6AA6FF"
+            stroke-width="2.4"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <circle cx="25" cy="9" r="3.2" fill="#FFB547" />
+        </svg>
+        Elucid
+      </a>
+
+      <h1>Como conseguir a sua <em>chave do Gemini</em></h1>
+      <p class="sub">
+        A chave libera o assistente do Elucid (as perguntas em linguagem simples e o texto do plano de ação). Leva uns 2
+        minutos e só precisa de uma conta Google. As análises prontas funcionam sem chave.
+      </p>
+
+      <div class="acoes">
+        <a
+          class="btn btn-primario"
+          href="https://aistudio.google.com/app/apikey"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Criar minha chave no Google ↗</a
+        >
+        <a class="btn" href="elucid.html">Abrir o Elucid</a>
+      </div>
+
+      <ol>
+        <li>
+          <b>Abra a página de chaves do Google AI Studio</b>
+          <span
+            >Clique no botão azul acima ou acesse
+            <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer"
+              >aistudio.google.com/app/apikey</a
+            >.</span
+          >
+        </li>
+        <li>
+          <b>Entre com a sua conta Google</b>
+          <span>A mesma do Gmail serve. Na primeira vez, o Google pede para você aceitar os termos de uso.</span>
+        </li>
+        <li>
+          <b>Clique em “Criar chave de API”</b>
+          <span
+            >Em inglês, o botão aparece como <code>Create API key</code>. Se o Google perguntar por um projeto, escolha
+            o que ele sugerir ou crie um novo.</span
+          >
+        </li>
+        <li>
+          <b>Copie a chave</b>
+          <span>É um texto comprido de letras e números. Use o botão de copiar ao lado dela.</span>
+        </li>
+        <li>
+          <b>Cole no Elucid</b>
+          <span
+            >Abra o Elucid, clique em <b style="display: inline">Chave do Gemini</b> no menu lateral, cole a chave e
+            clique em <b style="display: inline">Salvar</b>. Pronto: o assistente já funciona.</span
+          >
+        </li>
+      </ol>
+
+      <div class="aviso">
+        <b>Trate a chave como uma senha.</b> Não envie para outras pessoas nem publique em lugar nenhum. Ela fica salva
+        só no seu navegador e é enviada apenas ao Google. Se achar que ela vazou, apague-a na mesma página do AI Studio
+        e crie outra.
+      </div>
+
+      <h2>Dúvidas comuns</h2>
+      <div class="perguntas">
+        <p>
+          <b>É pago?</b> O Google oferece um uso gratuito com limite de pedidos, que costuma bastar para testar o
+          Elucid. Os limites e preços atuais ficam na página do próprio Google AI Studio.
+        </p>
+        <p>
+          <b>O Google vê a minha planilha?</b> Não. O Elucid envia ao Gemini só os nomes e os resumos das colunas, nunca
+          as linhas da sua base.
+        </p>
+        <p>
+          <b>Uso o Elucid na empresa e me pediram uma senha.</b> Então você não precisa de chave: quem administra o
+          Elucid já guardou a chave no servidor. Basta digitar a senha da equipe.
+        </p>
+      </div>
+    </main>
+  </body>
+</html>

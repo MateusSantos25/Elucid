@@ -19,7 +19,7 @@ A função fica **fora** da pasta `site` de propósito: a Netlify recomenda isso
 ## Antes de começar
 
 1. Uma conta na Netlify (netlify.com).
-2. Uma chave do Gemini, criada no Google AI Studio por quem vai administrar. **Só essa pessoa vê a chave.**
+2. Uma chave do Gemini, criada no Google AI Studio por quem vai administrar ([passo a passo](https://mateussantos25.github.io/Elucid/chave.html)). **Só essa pessoa vê a chave.**
 3. O Node.js instalado no computador de quem vai publicar (nodejs.org, versão LTS).
 4. Escolha uma **senha da equipe**. Use algo longo e que não seja a senha de nada pessoal.
 

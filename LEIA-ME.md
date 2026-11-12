@@ -9,6 +9,8 @@
 
 ## O assistente (Gemini)
 
+Não tem uma chave? Veja o passo a passo em [`chave.html`](https://mateussantos25.github.io/Elucid/chave.html) (grátis, uns 2 minutos).
+
 As análises prontas funcionam sem chave. Para conversar com o assistente e montar o plano de ação com texto da IA, há dois jeitos:
 
 - **Na empresa (recomendado):** o Elucid é publicado uma vez com a função da Netlify (veja `publicar/PUBLICAR.md`). A chave fica no servidor e a equipe digita só a **senha da equipe**. Ninguém precisa criar token.
