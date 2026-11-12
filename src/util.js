@@ -2,8 +2,12 @@
 (function () {
   const A = (globalThis.Elucid = globalThis.Elucid || {});
   const nfs = {};
-  const nf = (c) => nfs[c] || (nfs[c] = new Intl.NumberFormat("pt-BR", { minimumFractionDigits: c, maximumFractionDigits: c }));
-  const rotulo = (c) => { const t = String(c).replace(/_/g, " ").trim(); return t.charAt(0).toUpperCase() + t.slice(1); };
+  const nf = (c) =>
+    nfs[c] || (nfs[c] = new Intl.NumberFormat("pt-BR", { minimumFractionDigits: c, maximumFractionDigits: c }));
+  const rotulo = (c) => {
+    const t = String(c).replace(/_/g, " ").trim();
+    return t.charAt(0).toUpperCase() + t.slice(1);
+  };
   const fmtNum = (x, c = 1) => (x == null || Number.isNaN(x) ? "-" : nf(c).format(x));
   const fmtInt = (x) => fmtNum(x, 0);
   const fmtPct = (x, c = 1) => fmtNum(x, c) + "%";
